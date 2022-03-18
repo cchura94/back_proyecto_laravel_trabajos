@@ -1,0 +1,25 @@
+1. migrar los archivos migration de Laravel
+    > php artisan migrate
+    > php artisan migrate:fresh
+    > php artisan migrate:status
+    > php artisan migrate:rollback
+
+2. Herramienta Tinker para pruebas del proyectos
+    > php artisan Tinker
+
+- Para generar un model
+    > php artisan make:model Categoria
+
+- Para generar una migration
+    > php artisan make:migration create_categorias_table
+
+- Para generar un model + migration
+    > php artisan make:model Persona -m
+    > php artisan make:model Rubro -m
+    php artisan make:model Empresa -m
+    php artisan make:model Publicacion -m
+
+- Para generar las tablas relacion (pivot) **** No tiene Model ****
+    > php artisan make:migration create_persona_publicacion_table
+    > php artisan make:migration create_empresa_persona_table
+    > php artisan make:migration create_empresa_rubro_table
