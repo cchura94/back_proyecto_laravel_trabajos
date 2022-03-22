@@ -1,0 +1,26 @@
+POST http://127.0.0.1:8000/api/v1/auth/login
+Accept: application/json
+Content-Type: application/json
+
+{
+    "email": "cristian@mail.com",
+    "password": "cristian54321"
+}
+
+### Registro de usuario
+POST http://127.0.0.1:8000/api/v1/auth/registro
+Accept: application/json
+Content-Type: application/json
+
+{
+    "name": "cristian",
+    "email": "cristian@mail.com",
+    "password": "cristian54321",
+    "password_confirmation": "cristian54321"
+}
+
+### Perfil 1
+
+GET http://127.0.0.1:8000/api/user
+Accept: application/json
+Authorization: Bearer 2|XY6syX3EtjioMabFtXd7F2ZtRXBCE2Hspl5HsWmi
