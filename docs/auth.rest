@@ -13,10 +13,10 @@ Accept: application/json
 Content-Type: application/json
 
 {
-    "name": "cristian",
-    "email": "cristian@mail.com",
-    "password": "cristian54321",
-    "password_confirmation": "cristian54321"
+    "name": "oscar",
+    "email": "oscar@mail.com",
+    "password": "oscar54321",
+    "password_confirmation": "oscar54321"
 }
 
 ### Perfil 1

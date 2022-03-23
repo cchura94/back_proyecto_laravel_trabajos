@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 use App\Http\Controllers\Api\AuthController;
+use App\Http\Controllers\Api\CategoriaController;
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
@@ -23,7 +24,11 @@ Route::post("/v1/auth/login", [AuthController::class, "login"]);
 Route::post("/v1/auth/registro", [AuthController::class, "registro"]);
 
 Route::middleware('auth:sanctum')->group(function(){
+
     Route::get("/v1/auth/perfil", [AuthController::class, "perfil"]);
     Route::post("/v1/auth/logout", [AuthController::class, "salir"]);
     // agregar las rutas de manera segura
+
+    Route::apiResource("v1/categoria", CategoriaController::class);
+
 });

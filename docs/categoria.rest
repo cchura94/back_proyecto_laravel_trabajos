@@ -1,0 +1,36 @@
+### Lista de Categorias
+GET http://127.0.0.1:8000/api/v1/categoria
+Accept: application/json
+Authorization: Bearer 7|kjtLgmCJtvJ5M1eSuf1hR19sXD3yWwHtalfekkOt
+
+### Guardar categoria
+POST http://127.0.0.1:8000/api/v1/categoria
+Accept: application/json
+Content-Type: application/json
+Authorization: Bearer 7|kjtLgmCJtvJ5M1eSuf1hR19sXD3yWwHtalfekkOt
+
+{
+    "nombre": "INGENIERIA",
+    "detalle": "para Ingenieria"
+}
+
+### Mostrar una Categoria por id
+GET http://127.0.0.1:8000/api/v1/categoria/1
+Accept: application/json
+Authorization: Bearer 7|kjtLgmCJtvJ5M1eSuf1hR19sXD3yWwHtalfekkOt
+
+### Modificar una Categoria por id
+PUT http://127.0.0.1:8000/api/v1/categoria/1
+Accept: application/json
+Content-Type: application/json
+Authorization: Bearer 7|kjtLgmCJtvJ5M1eSuf1hR19sXD3yWwHtalfekkOt
+
+{
+    "nombre": "MEDICINA y SALUD",
+    "detalle": "para salud"
+}
+
+### Eliminar una Categoria por id
+DELETE http://127.0.0.1:8000/api/v1/categoria/2
+Accept: application/json
+Authorization: Bearer 7|kjtLgmCJtvJ5M1eSuf1hR19sXD3yWwHtalfekkOt
