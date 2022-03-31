@@ -18,5 +18,9 @@ class Categoria extends Model
     
     public $timestamps = false; // created_at, updated_at
     */
+    public function publicaciones()
+    {
+        return $this->hasMany(Publicacion::class);
+    }
     
 }
