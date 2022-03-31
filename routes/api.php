@@ -30,5 +30,6 @@ Route::middleware('auth:sanctum')->group(function(){
     // agregar las rutas de manera segura
 
     Route::apiResource("v1/categoria", CategoriaController::class);
-
+    
 });
+
