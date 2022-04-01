@@ -30,11 +30,18 @@ class EmpresaController extends Controller
         // validar
         $request->validate([
             "nombre" => "required|unique:empresas",
-            "pais" => "required|max:20"
+            "pais" => "required|max:20",
+            'logo' => 'required|mimes:png,jpg,jpeg|max:2048'
         ]);
 
         // subir imagen
         $img_logo = "";
+        if($file = $request->file("logo")){
+            $img_logo = time(). '-' . $file->getClientOriginalName();
+            $file->move("imagenes", $img_logo);
+
+            $img_logo = "imagenes/".$img_logo;
+        }
 
         // guardar
         $empresa = new Empresa;

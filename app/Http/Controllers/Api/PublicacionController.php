@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Publicacion;
 
 class PublicacionController extends Controller
 {
@@ -14,7 +15,8 @@ class PublicacionController extends Controller
      */
     public function index()
     {
-        //
+        $publicaciones = Publicacion::paginate(5);
+        return response()->json($publicaciones, 200);
     }
 
     /**
@@ -25,19 +27,37 @@ class PublicacionController extends Controller
      */
     public function store(Request $request)
     {
-        /*
-        titulo
-tipo
-nivel
-descripcion
-requerimientos
-salario
-ubicacion
-estado
-empresa_id
-categoria_id
-persona_id
-         */
+        // validar
+        $request->validate([
+            "titulo" => "required",
+            "tipo" => "required",
+            "descripcion" => "required",
+            "empresa_id" => "required",
+            "categoria_id" => "required",
+            "persona_id" => "required"
+        ]);
+        // guardar
+        $publicacion = new Publicacion();
+        $publicacion->titulo = $request->titulo;
+        $publicacion->tipo = $request->tipo;
+        $publicacion->nivel = $request->nivel;
+        $publicacion->descripcion = $request->descripcion;
+        $publicacion->requerimientos = $request->requerimientos;
+        $publicacion->salario = $request->salario;
+        $publicacion->ubicacion = $request->ubicacion;
+        $publicacion->estado = $request->estado;
+        $publicacion->empresa_id = $request->empresa_id;
+        $publicacion->categoria_id = $request->categoria_id;
+        $publicacion->persona_id = $request->persona_id;
+        $publicacion->ubicacion = $request->ubicacion;
+        $publicacion->save();
+        // responder
+        
+        return response()->json([
+            "status" => 1,
+            "mensaje" => "Publicacion registrada",
+            "error" => false
+        ], 201);        
     }
 
     /**
@@ -48,7 +68,13 @@ persona_id
      */
     public function show($id)
     {
-        //
+        $publicacion = Publicacion::FindOrFail($id);
+
+        return response()->json([
+            "status" => 1,
+            "data" => $publicacion,
+            "error" => false
+        ], 200);  
     }
 
     /**
@@ -60,7 +86,38 @@ persona_id
      */
     public function update(Request $request, $id)
     {
-        //
+        
+        // validar
+        $request->validate([
+            "titulo" => "required",
+            "tipo" => "required",
+            "descripcion" => "required",
+            "empresa_id" => "required",
+            "categoria_id" => "required",
+            "persona_id" => "required"
+        ]);
+        // modificar
+        $publicacion = Publicacion::FindOrFail($id);
+        $publicacion->titulo = $request->titulo;
+        $publicacion->tipo = $request->tipo;
+        $publicacion->nivel = $request->nivel;
+        $publicacion->descripcion = $request->descripcion;
+        $publicacion->requerimientos = $request->requerimientos;
+        $publicacion->salario = $request->salario;
+        $publicacion->ubicacion = $request->ubicacion;
+        $publicacion->estado = $request->estado;
+        $publicacion->empresa_id = $request->empresa_id;
+        $publicacion->categoria_id = $request->categoria_id;
+        $publicacion->persona_id = $request->persona_id;
+        $publicacion->ubicacion = $request->ubicacion;
+        $publicacion->save();
+        // responder
+        
+        return response()->json([
+            "status" => 1,
+            "mensaje" => "Publicacion Modificada",
+            "error" => false
+        ], 200);
     }
 
     /**
@@ -71,6 +128,13 @@ persona_id
      */
     public function destroy($id)
     {
-        //
+        $publicacion = Publicacion::FindOrFail($id);
+        $publicacion->delete();
+
+        return response()->json([
+            "status" => 1,
+            "mensaje" => "Publicacion Eliminada",
+            "error" => false
+        ], 200);
     }
 }
