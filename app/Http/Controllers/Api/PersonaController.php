@@ -43,6 +43,7 @@ class PersonaController extends Controller
         $persona->ci_nit = $request->ci_nit;
         $persona->tel_cel = $request->tel_cel;
         $persona->direccion = $request->direccion;
+        $persona->user_id = $request->user_id;
         $persona->save();
         // responder
 

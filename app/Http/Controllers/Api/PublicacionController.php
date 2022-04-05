@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Publicacion;
+use Illuminate\Support\Facades\Auth;
 
 class PublicacionController extends Controller
 {
@@ -34,7 +35,7 @@ class PublicacionController extends Controller
             "descripcion" => "required",
             "empresa_id" => "required",
             "categoria_id" => "required",
-            "persona_id" => "required"
+            //"persona_id" => "required"
         ]);
         // guardar
         $publicacion = new Publicacion();
@@ -45,10 +46,13 @@ class PublicacionController extends Controller
         $publicacion->requerimientos = $request->requerimientos;
         $publicacion->salario = $request->salario;
         $publicacion->ubicacion = $request->ubicacion;
-        $publicacion->estado = $request->estado;
+        if($request->estado){
+
+            $publicacion->estado = $request->estado;
+        }
         $publicacion->empresa_id = $request->empresa_id;
         $publicacion->categoria_id = $request->categoria_id;
-        $publicacion->persona_id = $request->persona_id;
+        $publicacion->persona_id = 1;
         $publicacion->ubicacion = $request->ubicacion;
         $publicacion->save();
         // responder
