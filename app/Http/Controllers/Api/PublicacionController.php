@@ -14,9 +14,14 @@ class PublicacionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $publicaciones = Publicacion::paginate(5);
+        $limit = ($request->limit)?$request->limit:2;
+        
+        $publicaciones = Publicacion::with('categoria')
+                                    ->with('empresa')
+                                    ->select('titulo', 'nivel', 'categoria_id', 'empresa_id', 'id', 'salario')
+                                    ->paginate($limit);
         return response()->json($publicaciones, 200);
     }
 
