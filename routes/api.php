@@ -44,3 +44,5 @@ Route::apiResource("v1/empresa", EmpresaController::class);
 Route::apiResource("v1/publicacion", PublicacionController::class);
 Route::apiResource("v1/rubro", RubroController::class);
 Route::apiResource("v1/persona", PersonaController::class);
+
+Route::get("v1/reporte/publicacion", [PublicacionController::class, "generarPDF"]);

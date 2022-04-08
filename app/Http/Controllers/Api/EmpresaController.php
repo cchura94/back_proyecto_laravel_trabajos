@@ -31,7 +31,7 @@ class EmpresaController extends Controller
         $request->validate([
             "nombre" => "required|unique:empresas",
             "pais" => "required|max:20",
-            'logo' => 'required|mimes:png,jpg,jpeg|max:2048'
+            'logo' => 'mimes:png,jpg,jpeg|max:2048'
         ]);
 
         // subir imagen

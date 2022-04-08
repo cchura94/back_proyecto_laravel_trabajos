@@ -146,4 +146,12 @@ class PublicacionController extends Controller
             "error" => false
         ], 200);
     }
+
+    public function generarPDF()
+    {
+        $lista_publicacion = Publicacion::all();
+        $pdf = \PDF::loadView('pdf.publi-pdf', ["publicaciones" => $lista_publicacion]);
+        return $pdf->stream('lista_publicacion.pdf');
+        
+    }
 }
