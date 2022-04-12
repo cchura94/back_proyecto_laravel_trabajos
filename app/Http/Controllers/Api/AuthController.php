@@ -67,7 +67,7 @@ class AuthController extends Controller
             "status" => 1,
             "mensaje" => "Usuario registrado",
             "error" => false
-        ], 200);
+        ], 201);
     }
 
     public function perfil()
