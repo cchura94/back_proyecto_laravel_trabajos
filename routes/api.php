@@ -45,3 +45,9 @@ Route::middleware('auth:sanctum')->group(function(){
     Route::get("v1/reporte/publicacion", [PublicacionController::class, "generarPDF"]);
     
 });
+
+Route::get('/no-autenticado', function(){
+    return response()->json([
+        "mensaje" => "Debes iniciar sesion"
+    ]);
+})->name('login');
