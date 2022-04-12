@@ -36,13 +36,12 @@ Route::middleware('auth:sanctum')->group(function(){
     Route::get("/v1/auth/perfil", [AuthController::class, "perfil"]);
     Route::post("/v1/auth/logout", [AuthController::class, "salir"]);
     // agregar las rutas de manera segura
-
+    Route::apiResource("v1/categoria", CategoriaController::class);
+    Route::apiResource("v1/empresa", EmpresaController::class);
+    Route::apiResource("v1/publicacion", PublicacionController::class);
+    Route::apiResource("v1/rubro", RubroController::class);
+    Route::apiResource("v1/persona", PersonaController::class);
+    
+    Route::get("v1/reporte/publicacion", [PublicacionController::class, "generarPDF"]);
     
 });
-Route::apiResource("v1/categoria", CategoriaController::class);
-Route::apiResource("v1/empresa", EmpresaController::class);
-Route::apiResource("v1/publicacion", PublicacionController::class);
-Route::apiResource("v1/rubro", RubroController::class);
-Route::apiResource("v1/persona", PersonaController::class);
-
-Route::get("v1/reporte/publicacion", [PublicacionController::class, "generarPDF"]);
